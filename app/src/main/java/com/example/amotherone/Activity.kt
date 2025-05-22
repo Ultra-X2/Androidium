@@ -3,22 +3,24 @@
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.navigation.compose.*
-import androidx.compose.runtime.CompositionLocalProvider
-import com.example.amotherone.navigation.ROUTE_LOGIN
-import com.example.amotherone.ui.themes.screens.login.Login_Screen
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.amotherone.ui.theme.screens.login.LoginScreen
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val padding = PaddingValues()
             val navController = rememberNavController()
 
             NavHost(navController = navController, startDestination = "login") {
-                composable("login") { Login_Screen(navController) }
+                composable("login") {
+                    paddingValues ->
+                    LoginScreen(navController, padding) }
 
                 // Add more routes here as needed
             }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,14 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AmotherOne"
         tools:targetApi="31">
+        <activity android:name=".ui.theme.FullPreviewActivity" />
+
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTop"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.AmotherOne">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="com.example.amotherone://callback"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

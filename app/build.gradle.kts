@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -36,11 +37,21 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding= true
     }
 }
 
 dependencies {
-    implementation("androidx.navigation:navigation-common:2.8.9")
+    implementation(libs.firebase.firestore)
+    implementation(libs.androidx.animation.core.android)
+    implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.media3.session)
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation(libs.coil.compose)
+    implementation(libs.retrofit)
+    implementation( libs.glide)
+    implementation(libs.androidx.navigation.common)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -55,6 +66,17 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.appcompat)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
+    implementation(libs.androidx.media3.common.ktx)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -62,7 +84,29 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.compose.ui:ui-android:1.8.0")
-    implementation("androidx.compose:compose-bom-alpha:2025.04.01")
-    implementation("androidx.compose.ui:ui-graphics-android:1.8.0")
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.compose.bom.alpha)
+    implementation(libs.androidx.ui.graphics.android)
+    //implementation (libs.firebase.storage.ktx)
+    implementation (libs.google.firebase.database.ktx)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+
+}
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    // ...
+}
+
+allprojects {
+    repositories {
+        //google()
+        //mavenCentral()
+        // Add any other necessary repositories here
+    }
 }
